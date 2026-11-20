@@ -283,16 +283,26 @@ section { padding-block: 48px; border-top: 1px solid var(--line); }
 .gains p { color: var(--muted); font-size: 14.5px; }
 
 /* Pilot + download */
-.pilot { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px; }
+.pilot { display: grid; gap: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 28px; }
 .pilot > * { min-width: 0; }
-.pilot h2 { font-size: clamp(22px, 2.6vw, 28px); font-weight: 800; line-height: 1.2; margin-top: 12px; }
-.pilot p { color: var(--muted); margin-top: 12px; max-width: 36em; }
-.file { display: grid; grid-template-columns: 52px 1fr; gap: 16px; align-items: center; padding: 18px; border: 1px dashed var(--line); border-radius: 12px; background: var(--bg); }
-.file > div { min-width: 0; }
-.file-icon { width: 52px; height: 64px; border-radius: 6px; background: var(--indigo-soft); color: var(--indigo); display: grid; place-items: end center; padding-bottom: 8px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; clip-path: polygon(0 0, 72% 0, 100% 22%, 100% 100%, 0 100%); }
-.file-name { font-weight: 600; overflow-wrap: anywhere; }
-.file-meta { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin: 2px 0 12px; }
-.dl-status { font-size: 13px; color: var(--muted); margin-top: 8px; min-height: 1.2em; }
+.pilot-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+.pilot-heading { flex: 1 1 340px; min-width: 0; }
+.pilot h2 { font-size: clamp(24px, 3vw, 32px); font-weight: 800; line-height: 1.2; margin-top: 12px; max-width: 22em; }
+.pilot-download { display: grid; justify-items: start; gap: 8px; max-width: 100%; }
+.pilot-plan { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 24px; }
+.pilot-scope { display: grid; justify-items: center; align-content: center; gap: 8px; padding: 24px 16px; border-radius: 12px; background: var(--indigo-soft); }
+.pilot-scope b { font-family: var(--font-display); font-size: clamp(3rem, 5vw, 4rem); font-weight: 800; line-height: 1; color: var(--indigo); font-variant-numeric: tabular-nums; }
+.pilot-scope span { font-size: 1rem; color: var(--indigo); }
+.pilot-comparison { min-width: 0; display: grid; gap: 16px; align-content: center; }
+.pilot-compare-label { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 1rem; }
+.pilot-compare-label > span:first-child { color: var(--muted); }
+.pilot-versus { font-family: var(--font-mono); font-size: .875rem; color: var(--muted); }
+.pilot-compare-label strong { color: var(--indigo); font-weight: 600; }
+.pilot-costs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.pilot-costs li { position: relative; min-width: 0; display: grid; place-items: center; padding: 18px 10px; border: 1px solid var(--line); border-top: 3px solid var(--orange); border-radius: 10px; background: var(--bg); font-size: 1rem; font-weight: 600; line-height: 1.4; text-align: center; }
+.pilot-costs li + li::before { content: "+"; position: absolute; left: -25px; width: 24px; top: 50%; transform: translateY(-50%); font-size: 1.125rem; font-weight: 400; color: var(--muted); }
+.dl-status { font-size: .875rem; color: var(--muted); max-width: 24em; }
+.dl-status:empty { display: none; }
 
 /* Team */
 .team-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.35fr); gap: 24px; }
@@ -323,7 +333,8 @@ section { padding-block: 48px; border-top: 1px solid var(--line); }
 footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
 
 @media (max-width: 860px) {
-  .hero, .pilot { grid-template-columns: 1fr; gap: 28px; }
+  .hero { grid-template-columns: 1fr; gap: 28px; }
+  .pilot-plan { grid-template-columns: 120px minmax(0, 1fr); gap: 20px; }
   .flow, .gains { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .costs { grid-template-columns: 1fr; }
@@ -357,6 +368,11 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
   .stat + .stat { border-top: 1px solid var(--line); padding-top: 20px; }
   .person h3 { font-size: 1.125rem; }
   .pilot { padding: 20px; }
+  .pilot-plan { grid-template-columns: 1fr; }
+  .pilot-scope { display: flex; justify-content: center; gap: 14px; padding: 18px; }
+  .pilot-costs { grid-template-columns: 1fr; gap: 20px; }
+  .pilot-costs li { padding-block: 14px; }
+  .pilot-costs li + li::before { left: 50%; top: -22px; width: 24px; height: 20px; line-height: 20px; transform: translateX(-50%); }
 }
 @media (prefers-reduced-motion: no-preference) {
   .btn, .copy { transition: filter .15s, border-color .15s; }
@@ -558,18 +574,25 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
 
   <section id="pilot">
     <div class="pilot">
-      <div>
-        <div class="eyebrow">The pilot</div>
-        <h2>A small pilot on a real return flow.</h2>
-        <p>We are proposing a pilot with fashion retailers, marketplaces and returns operators: one product category, one return flow and a few staffed return points, measured against the current process. Download the one-pager for an overview of Atar.</p>
-      </div>
-      <div class="file">
-        <div class="file-icon" aria-hidden="true">PDF</div>
-        <div>
-          <div class="file-name">Atar returns one-pager</div>
-          <div class="file-meta">PDF · 1 page · 2.5 MB</div>
-          <a class="btn btn-primary" id="dl" href="Atar_Pilot_Proposal.pdf" target="_blank" rel="noopener">Download PDF</a>
+      <div class="pilot-header">
+        <div class="pilot-heading">
+          <div class="eyebrow">The pilot</div>
+          <h2>Test your cost per returned item.</h2>
+        </div>
+        <div class="pilot-download">
+          <a class="btn btn-primary" id="dl" href="Atar_Pilot_Proposal.pdf" target="_blank" rel="noopener">Download pilot PDF</a>
           <div class="dl-status" id="dl-status" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="pilot-plan">
+        <div class="pilot-scope"><b>1</b><span>parcel shop</span></div>
+        <div class="pilot-comparison">
+          <div class="pilot-compare-label"><span>Current process</span><span class="pilot-versus">vs</span><strong>With Atar</strong></div>
+          <ul class="pilot-costs" aria-label="Costs per returned item">
+            <li>Shipping</li>
+            <li>Shop checks</li>
+            <li>Warehouse handling</li>
+          </ul>
         </div>
       </div>
     </div>

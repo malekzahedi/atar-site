@@ -155,7 +155,6 @@ a { color: var(--indigo); }
 .route-resale { color: var(--ok); }
 .route-fix { color: var(--orange-ink); }
 .route-review { color: var(--indigo); }
-.record-foot { padding: 10px 18px; background: var(--indigo-soft); color: var(--muted); font-size: 11.5px; }
 
 /* Sections */
 section { padding-block: 48px; border-top: 1px solid var(--line); }
@@ -415,7 +414,6 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
         <dt>Packaging</dt><dd>None · reusable tote</dd>
         <dt>Route</dt><dd><span class="pill pill-route">Resale stock</span></dd>
       </dl>
-      <figcaption class="record-foot">Illustrative record of what each inspected item would carry. Photo of a real item.</figcaption>
     </figure>
   </div>
 </div>
@@ -438,15 +436,17 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
     <div class="costs">
       <div>
         <h3>What one returned fashion item costs</h3>
-        <div class="sub">Per item, UK fashion retail, in pounds sterling</div>
+        <div class="sub">Per item, UK fashion retail, in euros (approx.)</div>
+        <!-- GBP amounts divided by 0.83581: ECB reference rate, 19 Nov 2026. Chart maximum: EUR 50. -->
         <ul class="crows">
-          <li class="crow"><span class="lab">Shipping and transport</span><span class="bar" aria-hidden="true"><i style="width:9.4%"></i><i style="left:9.4%;width:5.1%"></i></span><span class="val">£3.75–5.80</span></li>
-          <li class="crow"><span class="lab">Warehouse processing</span><span class="bar" aria-hidden="true"><i style="width:5.3%"></i><i style="left:5.3%;width:2.2%"></i></span><span class="val">£2.10–3.00</span></li>
-          <li class="crow"><span class="lab">Customer care</span><span class="bar" aria-hidden="true"><i style="width:4.6%"></i></span><span class="val">~£1.85</span></li>
-          <li class="crow"><span class="lab">Markdown and liquidation</span><span class="bar" aria-hidden="true"><i style="width:11.8%"></i><i style="left:11.8%;width:54.2%"></i></span><span class="val">£4.70–26.40</span></li>
-          <li class="crow total"><span class="lab">Total per item</span><span class="bar" aria-hidden="true"><i style="width:36.0%"></i><i style="left:36.0%;width:56.8%"></i></span><span class="val">£14.40–37.10</span></li>
+          <li class="crow"><span class="lab">Shipping and transport</span><span class="bar" aria-hidden="true"><i style="width:9.0%"></i><i style="left:9.0%;width:4.9%"></i></span><span class="val">€4.49–6.94</span></li>
+          <li class="crow"><span class="lab">Warehouse processing</span><span class="bar" aria-hidden="true"><i style="width:5.0%"></i><i style="left:5.0%;width:2.2%"></i></span><span class="val">€2.51–3.59</span></li>
+          <li class="crow"><span class="lab">Customer care</span><span class="bar" aria-hidden="true"><i style="width:4.4%"></i></span><span class="val">~€2.21</span></li>
+          <li class="crow"><span class="lab">Markdown and liquidation</span><span class="bar" aria-hidden="true"><i style="width:11.2%"></i><i style="left:11.2%;width:51.9%"></i></span><span class="val">€5.62–31.59</span></li>
+          <li class="crow total"><span class="lab">Total per item</span><span class="bar" aria-hidden="true"><i style="width:34.5%"></i><i style="left:34.5%;width:54.3%"></i></span><span class="val">€17.23–44.39</span></li>
         </ul>
-        <div class="scale" aria-hidden="true"><span><em style="font-style:normal">£0</em><em style="font-style:normal">£20</em><em style="font-style:normal">£40</em></span></div>
+        <div class="scale" aria-hidden="true"><span><em style="font-style:normal">€0</em><em style="font-style:normal">€25</em><em style="font-style:normal">€50</em></span></div>
+        <div class="sub">Converted using the <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-gbp.en.html">ECB rate of 19 Nov 2026</a>.</div>
       </div>
       <aside>
         <div><b>Up to 50%</b><span>of a returned garment's value can be lost within 8–16 weeks of waiting</span></div>

@@ -247,32 +247,7 @@ section { padding-block: 48px; border-top: 1px solid var(--line); }
 .flow li.key::before { background: var(--indigo); box-shadow: 0 0 0 4px var(--indigo-soft); }
 .flow li.key h3 { color: var(--indigo); }
 
-/* Journey of a return */
-.journey { margin-bottom: 40px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px 24px 22px; }
-.journey-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
-.journey-head h3 { font-size: 18px; font-weight: 800; }
-.journey-head span { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
-.legend { display: flex; gap: 14px; flex-wrap: wrap; }
-.legend em { font-style: normal; display: inline-flex; align-items: center; gap: 6px; }
-.legend em::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--indigo); opacity: .35; }
-.legend em.chk::before { background: var(--orange); opacity: 1; border-radius: 50%; }
-.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); position: relative; }
-.step { min-width: 0; display: grid; grid-template-rows: 70px auto auto; align-content: start; gap: 10px; justify-items: center; text-align: center; position: relative; padding: 0 6px; }
-.cost { align-self: end; width: 34px; height: var(--h); border-radius: 4px 4px 0 0; background: var(--indigo); opacity: .35; }
-.node { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); border: 2px solid var(--line); color: var(--ink); position: relative; z-index: 1; }
-.node svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.step::after { content: ""; position: absolute; top: 104px; left: 50%; width: 100%; height: 2px; background: var(--line); }
-.step:last-child::after { display: none; }
-.step.ghost .node { border: 2px dashed var(--orange); color: var(--orange-ink); }
-.step.check .node { border-color: var(--orange); background: var(--orange); color: #fff; }
-.step h4 { margin: 0; font-family: var(--font-display); font-size: 14.5px; font-weight: 700; }
-.step p { font-size: 13px; color: var(--muted); max-width: 16em; margin-inline: auto; }
-.flag { display: inline-block; font-family: var(--font-mono); font-size: 11px; line-height: 1.35; padding: 4px 8px; border-radius: 6px; margin-top: 8px; max-width: 15em; }
-.flag-ghost { color: var(--orange-ink); border: 1px dashed var(--orange); }
-.flag-check { color: #fff; background: var(--orange); }
-.span-bar { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; align-items: center; }
-.span-bar div { grid-column: 2 / 5; height: 10px; border: 2px solid var(--muted); border-top: 0; border-radius: 0 0 6px 6px; opacity: .6; }
-.span-bar span { grid-column: 2 / 5; text-align: center; font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-top: 6px; }
+/* Problem headings */
 .problem h3 { display: flex; align-items: center; gap: 10px; }
 .problem h3 svg { width: 22px; height: 22px; flex: none; fill: none; stroke: var(--orange-ink); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -368,20 +343,11 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
 @media (max-width: 600px) {
   .problem, .flow, .gains, .team, .track, .stats { grid-template-columns: 1fr; }
   .callout { grid-template-columns: 1fr; }
-  .journey { padding: 20px 16px; }
   .costs, .consol { padding: 20px 16px; }
   .costs aside { grid-template-columns: 1fr; }
   .crow, .scale { grid-template-columns: 1fr 6.5em; row-gap: 4px; }
   .crow .lab { grid-column: 1 / -1; }
   .scale span { grid-column: 1; }
-  .steps { grid-template-columns: 1fr; gap: 18px; }
-  .step { grid-template-columns: 48px 1fr; grid-template-rows: auto auto; justify-items: start; text-align: left; column-gap: 14px; row-gap: 6px; padding: 0; }
-  .step .node { grid-row: 1 / 3; }
-  .step > div:last-child { grid-column: 2; grid-row: 1; }
-  .step p { margin-inline: 0; }
-  .cost { grid-column: 2; grid-row: 2; height: 8px; width: var(--h); border-radius: 4px; align-self: start; }
-  .step::after { top: 48px; left: 23px; width: 2px; height: calc(100% - 30px); }
-  .span-bar { display: none; }
   .items { grid-template-columns: 1fr; gap: 10px; }
   .item { grid-template-columns: 112px 1fr; grid-template-rows: auto; }
   .item img { height: 100%; }
@@ -410,7 +376,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
       <h1>Inspect fashion returns <em>at the drop-off point</em>, before they travel.</h1>
       <p class="lede">Atar checks returned fashion items where customers hand them in, then ships them together to the right place. Retailers, marketplaces and returns operators <strong>know what came back, and in what state, before paying to move it.</strong></p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#pilot">Download the pilot proposal</a>
+        <a class="btn btn-primary" href="#pilot">Download the returns one-pager</a>
         <a class="btn btn-ghost" href="#team">Who we are</a>
       </div>
     </div>
@@ -467,18 +433,6 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
         <div><b>15–20%</b><span>more warehouse space is needed for returns than for outbound orders</span></div>
       </aside>
     </div>
-
-    <figure class="journey" aria-label="Journey of a fashion return today">
-      <div class="journey-head"><h3>The journey of a return today</h3><span class="legend"><em>Cost spent so far (illustrative)</em><em class="chk">Inspection</em></span></div>
-      <ol class="steps">
-        <li class="step"><div class="cost" style="--h:18%"></div><div class="node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></div><div><h4>Customer packs it</h4><p>Finds a box, prints a label.</p></div></li>
-        <li class="step ghost"><div class="cost" style="--h:30%"></div><div class="node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v10h16V10"/><path d="M3 10 5 4h14l2 6z"/><path d="M10 20v-5h4v5"/></svg></div><div><h4>Drop-off point</h4><p>Handed over sealed. Nobody looks inside.</p><span class="flag flag-ghost">Earliest point it could be checked</span></div></li>
-        <li class="step"><div class="cost" style="--h:55%"></div><div class="node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h11v10H2zM13 10h4l3 3v3h-7z"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></div><div><h4>Carrier and sorting hub</h4><p>Moves as a single parcel.</p></div></li>
-        <li class="step check"><div class="cost" style="--h:80%"></div><div class="node"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></div><div><h4>Returns centre</h4><p>Unpacked, identified and graded.</p><span class="flag flag-check">First time anyone checks it</span></div></li>
-        <li class="step"><div class="cost" style="--h:100%"></div><div class="node"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg></div><div><h4>Next destination</h4><p>Resale, outlet, repair or disposal.</p></div></li>
-      </ol>
-      <div class="span-bar" aria-hidden="true"><div></div><span>Weeks before the item can be sold again</span></div>
-    </figure>
 
     <div class="problem">
       <div>
@@ -607,13 +561,13 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
       <div>
         <div class="eyebrow">The pilot</div>
         <h2>A small pilot on a real return flow.</h2>
-        <p>We are proposing a pilot with fashion retailers, marketplaces and returns operators: one product category, one return flow and a few staffed return points, measured against the current process. The proposal sets out the scope, what we would measure and what we need from a partner.</p>
+        <p>We are proposing a pilot with fashion retailers, marketplaces and returns operators: one product category, one return flow and a few staffed return points, measured against the current process. Download the one-pager for an overview of Atar.</p>
       </div>
       <div class="file">
         <div class="file-icon" aria-hidden="true">PDF</div>
         <div>
-          <div class="file-name">Atar pilot proposal</div>
-          <div class="file-meta">PDF · 1 page · 1.9 MB</div>
+          <div class="file-name">Atar returns one-pager</div>
+          <div class="file-meta">PDF · 1 page · 2.5 MB</div>
           <a class="btn btn-primary" id="dl" href="Atar_Pilot_Proposal.pdf" target="_blank" rel="noopener">Download PDF</a>
           <div class="dl-status" id="dl-status" aria-live="polite"></div>
         </div>

@@ -222,26 +222,28 @@ section { padding-block: 48px; border-top: 1px solid var(--line); }
 .consol-head p { color: var(--muted); }
 .compare { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: stretch; }
 .compare > * { min-width: 0; }
-.panel { border-radius: 12px; padding: 18px; display: grid; gap: 14px; align-content: start; background: var(--bg); }
+.panel { border-radius: 12px; padding: 18px; display: grid; grid-template-rows: auto 1fr auto; gap: 20px; background: var(--bg); }
 .panel.atar { background: var(--indigo-soft); }
-.panel h4 { margin: 0; font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.panel h4 { margin: 0; font-family: var(--font-mono); font-size: .875rem; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
 .panel.atar h4 { color: var(--indigo); }
-.pgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.pgrid { width: 100%; max-width: 360px; justify-self: center; align-self: center; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
 .parcel { aspect-ratio: 1; border-radius: 6px; border: 1.5px solid var(--muted); display: grid; place-items: center; color: var(--muted); opacity: .8; }
 .parcel svg { width: 55%; height: 55%; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; }
-.crates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-.crate { border: 2px solid var(--indigo); border-radius: 8px; padding: 10px 8px 8px; display: grid; gap: 8px; background: var(--surface); }
-.crate .dots { display: flex; flex-wrap: wrap; gap: 6px; min-height: 64px; align-content: flex-start; }
-.crate .dots i { width: 20px; height: 20px; border-radius: 4px; background: var(--orange); }
-.crate span { font-family: var(--font-mono); font-size: 11px; color: var(--indigo); }
-.tally { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+.crates { width: 100%; max-width: 430px; justify-self: center; align-self: center; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.crate { margin: 0; min-width: 0; display: grid; gap: 12px; align-content: start; }
+.crate-grade-a { --box-color: #1E7A4C; }
+.crate-not-a { --box-color: #B83443; }
+.crate-box { position: relative; min-height: 132px; margin-top: 9px; border: 2px solid var(--box-color); border-radius: 4px 4px 10px 10px; padding: 22px 12px 14px; background: var(--box-color); color: #fff; box-shadow: inset 0 -12px 0 rgba(0, 0, 0, .08); }
+.crate-box::before { content: ""; position: absolute; top: -9px; left: -5px; right: -5px; height: 14px; border: 2px solid var(--box-color); border-radius: 4px; background: var(--box-color); box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .12); }
+.garments { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; max-width: 106px; }
+.garments svg { display: block; width: 100%; max-width: 30px; aspect-ratio: 1; fill: currentColor; }
+.crate figcaption { display: grid; gap: 4px; }
+.crate b { font-family: var(--font-display); font-size: 1rem; line-height: 1.3; }
+.crate span { font-size: .875rem; line-height: 1.4; color: var(--muted); }
+.tally { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 1rem; color: var(--muted); }
 .tally b { color: var(--ink); font-variant-numeric: tabular-nums; }
 .arrow { align-self: center; color: var(--orange); }
 .arrow svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.why { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.why > div { min-width: 0; display: grid; gap: 4px; align-content: start; }
-.why h5 { margin: 0; font-family: var(--font-display); font-size: 15px; font-weight: 700; }
-.why p { font-size: 14px; color: var(--muted); }
 .flow li.key::before { background: var(--indigo); box-shadow: 0 0 0 4px var(--indigo-soft); }
 .flow li.key h3 { color: var(--indigo); }
 
@@ -353,7 +355,6 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
   .costs aside { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 18px; grid-template-columns: repeat(3, 1fr); }
   .compare { grid-template-columns: 1fr; }
   .arrow { justify-self: center; transform: rotate(90deg); }
-  .why { grid-template-columns: repeat(2, 1fr); }
   .problem { grid-template-columns: 1fr; }
   .flow li:nth-child(2)::after { display: none; }
   .team-layout { grid-template-columns: 1fr; gap: 16px; }
@@ -373,7 +374,6 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
   .crow, .scale { grid-template-columns: 1fr 6.5em; row-gap: 4px; }
   .crow .lab { grid-column: 1 / -1; }
   .scale span { grid-column: 1; }
-  .why { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; gap: 18px; }
   .step { grid-template-columns: 48px 1fr; grid-template-rows: auto auto; justify-items: start; text-align: left; column-gap: 14px; row-gap: 6px; padding: 0; }
   .step .node { grid-row: 1 / 3; }
@@ -526,7 +526,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
     <ol class="flow">
       <li><h3>Drop-off</h3><p>Customers hand over eligible fashion items at a participating return point, without a shipping box.</p></li>
       <li><h3>Guided inspection</h3><p>A trained staff member inspects the item. Artificial intelligence (AI) guides the steps and captures identity, condition and photo evidence.</p></li>
-      <li class="key"><h3>Consolidation</h3><p>Accepted items go into reusable transport boxes, sorted by destination. One box carries many returns.</p></li>
+      <li class="key"><h3>Consolidation</h3><p>Inspected items go into two reusable shipping boxes: Grade A and NOT Grade A.</p></li>
       <li><h3>Smart routing</h3><p>Items go to the retailer, a warehouse or another agreed destination, based on the inspection result.</p></li>
     </ol>
     <p class="note">A person makes the inspection decision; the software supports it. Routing follows rules the retailer sets, and refunds stay under the retailer's control.</p>
@@ -534,27 +534,57 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
     <div class="consol">
       <div class="consol-head">
         <div class="eyebrow">Consolidation</div>
-        <h3>One reusable box for many returns, instead of one parcel per item.</h3>
-        <p>Because each item is already inspected at drop-off, it can be packed with others going to the same place. Returns stop travelling as single parcels and arrive pre-sorted.</p>
+        <h3>10 return boxes become 2 shipping boxes.</h3>
+        <p>Illustrative example · inspected and sorted at drop-off.</p>
       </div>
       <div class="compare">
         <div class="panel">
-          <h4>Today · 8 returns</h4>
-          <div class="pgrid" aria-hidden="true"><span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span><span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span><span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span><span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span><span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span><span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span><span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span><span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span></div>
-          <ul class="tally"><li><b>8</b> boxes bought or found by shoppers</li><li><b>8</b> labels, scans and pickups</li><li><b>8</b> parcels to open and sort at the warehouse</li></ul>
+          <h4>Today · 10 return boxes</h4>
+          <div class="pgrid" aria-hidden="true">
+            <span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span>
+            <span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span>
+            <span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span>
+            <span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span>
+            <span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span>
+            <span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span>
+            <span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span>
+            <span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span>
+            <span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span>
+            <span class="parcel"><svg viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg></span>
+          </div>
+          <ul class="tally"><li><b>10 individual return boxes</b></li><li>Each parcel needs its own label and unpacking</li></ul>
         </div>
         <div class="arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
         <div class="panel atar">
-          <h4>With Atar · same 8 returns</h4>
-          <div class="crates" aria-hidden="true"><div class="crate"><div class="dots"><i></i><i></i><i></i><i></i><i></i></div><span>Resale</span></div><div class="crate"><div class="dots"><i></i><i></i></div><span>Outlet</span></div><div class="crate"><div class="dots"><i></i></div><span>Retailer</span></div></div>
-          <ul class="tally"><li><b>0</b> shipping boxes for shoppers</li><li><b>3</b> reusable boxes, one per destination</li><li><b>Already sorted</b> and recorded when they arrive</li></ul>
+          <h4>With Atar · same 10 returns</h4>
+          <div class="crates">
+            <figure class="crate crate-grade-a">
+              <div class="crate-box" aria-hidden="true">
+                <div class="garments">
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 3 3 6l2.2 4.2 2.3-1.1V21h9V9.1l2.3 1.1L21 6l-5.5-3c-.4 1.7-1.9 2.8-3.5 2.8S8.9 4.7 8.5 3z"/></svg>
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 3 3 6l2.2 4.2 2.3-1.1V21h9V9.1l2.3 1.1L21 6l-5.5-3c-.4 1.7-1.9 2.8-3.5 2.8S8.9 4.7 8.5 3z"/></svg>
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 3 3 6l2.2 4.2 2.3-1.1V21h9V9.1l2.3 1.1L21 6l-5.5-3c-.4 1.7-1.9 2.8-3.5 2.8S8.9 4.7 8.5 3z"/></svg>
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 3 3 6l2.2 4.2 2.3-1.1V21h9V9.1l2.3 1.1L21 6l-5.5-3c-.4 1.7-1.9 2.8-3.5 2.8S8.9 4.7 8.5 3z"/></svg>
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 3 3 6l2.2 4.2 2.3-1.1V21h9V9.1l2.3 1.1L21 6l-5.5-3c-.4 1.7-1.9 2.8-3.5 2.8S8.9 4.7 8.5 3z"/></svg>
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 3 3 6l2.2 4.2 2.3-1.1V21h9V9.1l2.3 1.1L21 6l-5.5-3c-.4 1.7-1.9 2.8-3.5 2.8S8.9 4.7 8.5 3z"/></svg>
+                </div>
+              </div>
+              <figcaption><b>Grade A</b><span>Perfect, ready for resale</span></figcaption>
+            </figure>
+            <figure class="crate crate-not-a">
+              <div class="crate-box" aria-hidden="true">
+                <div class="garments">
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 3 3 6l2.2 4.2 2.3-1.1V21h9V9.1l2.3 1.1L21 6l-5.5-3c-.4 1.7-1.9 2.8-3.5 2.8S8.9 4.7 8.5 3z"/></svg>
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 3 3 6l2.2 4.2 2.3-1.1V21h9V9.1l2.3 1.1L21 6l-5.5-3c-.4 1.7-1.9 2.8-3.5 2.8S8.9 4.7 8.5 3z"/></svg>
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 3 3 6l2.2 4.2 2.3-1.1V21h9V9.1l2.3 1.1L21 6l-5.5-3c-.4 1.7-1.9 2.8-3.5 2.8S8.9 4.7 8.5 3z"/></svg>
+                  <svg viewBox="0 0 24 24" focusable="false"><path d="M8.5 3 3 6l2.2 4.2 2.3-1.1V21h9V9.1l2.3 1.1L21 6l-5.5-3c-.4 1.7-1.9 2.8-3.5 2.8S8.9 4.7 8.5 3z"/></svg>
+                </div>
+              </div>
+              <figcaption><b>NOT Grade A</b><span>All other returns</span></figcaption>
+            </figure>
+          </div>
+          <ul class="tally"><li><b>2 reusable shipping boxes</b>, sorted by grade</li><li><b>0</b> shipping boxes needed from shoppers</li></ul>
         </div>
-      </div>
-      <div class="why">
-        <div><h5>No box for the shopper</h5><p>Items are handed over as they are. Nothing to buy, tape or print.</p></div>
-        <div><h5>Fewer parcels to move</h5><p>Transport is paid per box, not per item, and boxes are reused.</p></div>
-        <div><h5>Pre-sorted on arrival</h5><p>Each box is bound for resale, outlet or the retailer, so it skips the sorting step.</p></div>
-        <div><h5>Less cardboard</h5><p>Single-use packaging drops out of the return flow.</p></div>
       </div>
     </div>
 

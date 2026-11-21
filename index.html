@@ -186,7 +186,7 @@ section { padding-block: 48px; border-top: 1px solid var(--line); }
 .problem-facts > div { min-width: 0; display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 8px; }
 .problem-facts dt { font-size: .875rem; line-height: 1.4; color: var(--muted); }
 .problem-facts dt span { display: block; margin-top: 4px; }
-.problem-facts dd { margin: 0; font-family: var(--font-display); font-size: 1.75rem; line-height: 1.1; font-weight: 800; color: var(--orange-ink); font-variant-numeric: tabular-nums; }
+.problem-facts dd { margin: 0; font-family: var(--font-display); font-size: clamp(1.5rem, 2.4vw, 1.75rem); line-height: 1.1; font-weight: 800; color: var(--orange-ink); font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 /* Problem stats */
 .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin-bottom: 36px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
@@ -208,29 +208,6 @@ section { padding-block: 48px; border-top: 1px solid var(--line); }
 .range .ticks { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: .875rem; color: var(--muted); }
 .range .ticks span { font: inherit; }
 
-
-/* Cost per returned item */
-.costs { margin-bottom: 40px; display: grid; grid-template-columns: 1.6fr 1fr; gap: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
-.costs > * { min-width: 0; }
-.costs h3 { font-size: 18px; font-weight: 800; }
-.costs .sub { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-top: 4px; }
-.crows { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
-.crow { display: grid; grid-template-columns: minmax(0, 11em) 1fr 7.5em; gap: 14px; align-items: center; font-size: 14px; }
-.crow .lab { color: var(--ink); }
-.crow .val { font-family: var(--font-mono); font-size: 12.5px; text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
-.crow .bar { position: relative; height: 12px; border-radius: 999px; background: var(--bg); }
-.crow .bar i { position: absolute; top: 0; bottom: 0; left: 0; border-radius: 999px; background: var(--orange); }
-.crow .bar i + i { left: auto; border-radius: 0 999px 999px 0; background: repeating-linear-gradient(135deg, var(--orange) 0 3px, transparent 3px 6px); }
-.crow.total { padding-top: 12px; border-top: 1px solid var(--line); font-weight: 600; }
-.crow.total .val { color: var(--ink); font-weight: 500; }
-.crow.total .bar i { background: var(--ink); }
-.crow.total .bar i + i { background: repeating-linear-gradient(135deg, var(--ink) 0 3px, transparent 3px 6px); }
-.scale { display: grid; grid-template-columns: minmax(0, 11em) 1fr 7.5em; gap: 14px; margin-top: 6px; font-size: 14px; }
-.scale span { grid-column: 2; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10.5px; color: var(--muted); }
-.costs aside { display: grid; gap: 18px; align-content: start; border-left: 1px solid var(--line); padding-left: 24px; }
-.costs aside div { display: grid; gap: 2px; }
-.costs aside b { font-family: var(--font-display); font-weight: 800; font-size: 30px; line-height: 1.05; color: var(--orange-ink); font-variant-numeric: tabular-nums; }
-.costs aside span { font-size: 14px; color: var(--muted); }
 
 /* Consolidation */
 .consol { margin-top: 40px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 26px; display: grid; gap: 22px; }
@@ -393,8 +370,6 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
   .pilot-plan { grid-template-columns: 120px minmax(0, 1fr); gap: 20px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .stats > div:last-child { grid-column: 1 / -1; }
-  .costs { grid-template-columns: 1fr; }
-  .costs aside { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 18px; grid-template-columns: repeat(3, 1fr); }
   .compare { grid-template-columns: 1fr; }
   .arrow { justify-self: center; transform: rotate(90deg); }
   .problem { grid-template-columns: 1fr; }
@@ -420,11 +395,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
   .problem, .values-grid, .team, .track, .stats { grid-template-columns: 1fr; }
   .problem-card { padding: 20px; }
   .callout { grid-template-columns: 1fr; }
-  .costs, .consol { padding: 20px 16px; }
-  .costs aside { grid-template-columns: 1fr; }
-  .crow, .scale { grid-template-columns: 1fr 6.5em; row-gap: 4px; }
-  .crow .lab { grid-column: 1 / -1; }
-  .scale span { grid-column: 1; }
+  .consol { padding: 20px 16px; }
   .value-card h3 { min-height: 0; font-size: 1.125rem; }
   .callout .date { justify-self: start; }
   .track { padding: 24px; gap: 20px; }
@@ -507,28 +478,6 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
       </div>
     </div>
 
-    <div class="costs">
-      <div>
-        <h3>What one returned fashion item costs</h3>
-        <div class="sub">Per item, UK fashion retail, in euros (approx.)</div>
-        <!-- GBP amounts divided by 0.83581: ECB reference rate, 19 Nov 2026. Chart maximum: EUR 50. -->
-        <ul class="crows">
-          <li class="crow"><span class="lab">Shipping and transport</span><span class="bar" aria-hidden="true"><i style="width:9.0%"></i><i style="left:9.0%;width:4.9%"></i></span><span class="val">€4.49–6.94</span></li>
-          <li class="crow"><span class="lab">Warehouse processing</span><span class="bar" aria-hidden="true"><i style="width:5.0%"></i><i style="left:5.0%;width:2.2%"></i></span><span class="val">€2.51–3.59</span></li>
-          <li class="crow"><span class="lab">Customer care</span><span class="bar" aria-hidden="true"><i style="width:4.4%"></i></span><span class="val">~€2.21</span></li>
-          <li class="crow"><span class="lab">Markdown and liquidation</span><span class="bar" aria-hidden="true"><i style="width:11.2%"></i><i style="left:11.2%;width:51.9%"></i></span><span class="val">€5.62–31.59</span></li>
-          <li class="crow total"><span class="lab">Total per item</span><span class="bar" aria-hidden="true"><i style="width:34.5%"></i><i style="left:34.5%;width:54.3%"></i></span><span class="val">€17.23–44.39</span></li>
-        </ul>
-        <div class="scale" aria-hidden="true"><span><em style="font-style:normal">€0</em><em style="font-style:normal">€25</em><em style="font-style:normal">€50</em></span></div>
-        <div class="sub">Converted using the <a href="https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/eurofxref-graph-gbp.en.html">ECB rate of 19 Nov 2026</a>.</div>
-      </div>
-      <aside>
-        <div><b>Up to 50%</b><span>of a returned garment's value can be lost within 8–16 weeks of waiting</span></div>
-        <div><b>€6.68</b><span>is the average fee Dutch webshops charge for a return, a signal of what one return parcel costs them</span></div>
-        <div><b>15–20%</b><span>more warehouse space is needed for returns than for outbound orders</span></div>
-      </aside>
-    </div>
-
     <div class="problem">
       <article class="problem-card">
         <div class="problem-card-header">
@@ -573,8 +522,8 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
           <div class="problem-primary-copy"><b class="problem-number">40%</b><span class="problem-caption">of online shoppers buy new return packaging</span></div>
         </div>
         <dl class="problem-secondary problem-facts">
-          <div><dt>Return shipments paid by shoppers<span>Netherlands</span></dt><dd>41%</dd></div>
-          <div><dt>Zalando return centres</dt><dd>~20</dd></div>
+          <div><dt>Average webshop return fee<span>Netherlands</span></dt><dd>€6.68</dd></div>
+          <div><dt>more warehouse space is needed for returns than for outbound orders.</dt><dd>15–20%</dd></div>
         </dl>
       </article>
     </div>

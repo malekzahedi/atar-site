@@ -148,15 +148,45 @@ section { padding-block: 48px; border-top: 1px solid var(--line); }
 .sec-head p { color: var(--muted); }
 
 /* Problem */
-.problem { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.problem > div { min-width: 0; display: grid; gap: 6px; align-content: start; }
-.problem h3 { font-size: 17px; font-weight: 700; }
-.problem p { color: var(--muted); font-size: 15px; }
-.problem ul { margin: 4px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
-.problem li { font-size: 14.5px; color: var(--muted); padding-left: 14px; position: relative; }
-.problem li::before { content: ""; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
-.problem li b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
-.problem > div { padding-top: 16px; border-top: 1px solid var(--line); }
+.problem { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.problem-card { min-width: 0; display: grid; grid-template-rows: auto auto 1fr; align-content: start; gap: 20px; padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.problem-card-header { display: grid; gap: 8px; }
+.problem-card h3 { font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
+.problem-card-header p { font-size: 1rem; color: var(--muted); }
+.problem-primary { min-height: 124px; min-width: 0; display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; align-items: center; }
+.problem-primary-copy { min-width: 0; display: grid; gap: 6px; }
+.problem-number { font-family: var(--font-display); font-size: clamp(2rem, 3.4vw, 2.75rem); font-weight: 800; line-height: 1; letter-spacing: -.02em; color: var(--orange-ink); font-variant-numeric: tabular-nums; }
+.problem-caption, .problem-context { font-size: .875rem; line-height: 1.4; color: var(--muted); }
+.fraud-waffle { width: 88px; display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 3px; }
+.fraud-waffle i { aspect-ratio: 1; border-radius: 2px; background: var(--line); }
+.fraud-waffle .is-active { background: var(--orange); }
+.problem-secondary { margin: 0; padding-top: 16px; border-top: 1px solid var(--line); display: grid; align-content: start; gap: 12px; }
+.fraud-trends { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.problem-bar-label { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 6px; font-size: .875rem; line-height: 1.4; }
+.problem-bar-label span { color: var(--muted); }
+.problem-bar-label b { flex: none; font-weight: 600; font-variant-numeric: tabular-nums; }
+.problem-bar { display: block; height: 8px; border-radius: 999px; overflow: hidden; background: var(--line); }
+.problem-bar i { display: block; height: 100%; border-radius: inherit; background: var(--orange); }
+.problem-delay { min-height: 124px; display: grid; justify-items: center; align-content: center; gap: 8px; padding: 16px 10px; border: 1px solid var(--line); border-top: 4px solid var(--orange); border-radius: 10px; background: var(--bg); text-align: center; }
+.problem-delay .problem-number { white-space: nowrap; }
+.problem-delay small { font-family: var(--font-body); font-size: 1rem; font-weight: 500; letter-spacing: 0; }
+.problem-loss-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.problem-loss-heading b { font-family: var(--font-display); font-size: 1.75rem; font-weight: 800; line-height: 1.1; color: var(--orange-ink); font-variant-numeric: tabular-nums; }
+.problem-loss-heading span { font-size: .875rem; color: var(--muted); }
+.problem-loss-range { position: relative; height: 12px; border-radius: 999px; overflow: hidden; background: var(--line); }
+.problem-loss-range i { position: absolute; top: 0; bottom: 0; left: 0; width: 20%; background: var(--orange); }
+.problem-loss-range i + i { left: 20%; width: 30%; background: repeating-linear-gradient(135deg, var(--orange) 0 3px, transparent 3px 6px); }
+.problem-loss-axis { display: flex; justify-content: space-between; gap: 8px; margin-top: 6px; font-size: .875rem; line-height: 1.4; color: var(--muted); }
+.packaging-grid { width: 88px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+.packaging-grid i { position: relative; aspect-ratio: 1; border: 1px solid var(--line); border-radius: 2px; background: var(--bg); }
+.packaging-grid i::after { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; border-left: 1px solid var(--line); }
+.packaging-grid .is-active { border-color: var(--orange); background: var(--orange); }
+.packaging-grid .is-active::after { border-color: var(--surface); }
+.problem-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.problem-facts > div { min-width: 0; display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 8px; }
+.problem-facts dt { font-size: .875rem; line-height: 1.4; color: var(--muted); }
+.problem-facts dt span { display: block; margin-top: 4px; }
+.problem-facts dd { margin: 0; font-family: var(--font-display); font-size: 1.75rem; line-height: 1.1; font-weight: 800; color: var(--orange-ink); font-variant-numeric: tabular-nums; }
 
 /* Problem stats */
 .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin-bottom: 36px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
@@ -232,11 +262,6 @@ section { padding-block: 48px; border-top: 1px solid var(--line); }
 .tally b { color: var(--ink); font-variant-numeric: tabular-nums; }
 .arrow { align-self: center; color: var(--orange); }
 .arrow svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-
-/* Problem headings */
-.problem h3 { display: flex; align-items: center; gap: 10px; }
-.problem h3 svg { width: 22px; height: 22px; flex: none; fill: none; stroke: var(--orange-ink); stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
-
 
 /* Regulation callout */
 .callout { margin-top: 32px; display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; padding: 22px 24px; border-radius: 14px; background: var(--indigo-soft); }
@@ -393,6 +418,7 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
 }
 @media (max-width: 600px) {
   .problem, .values-grid, .team, .track, .stats { grid-template-columns: 1fr; }
+  .problem-card { padding: 20px; }
   .callout { grid-template-columns: 1fr; }
   .costs, .consol { padding: 20px 16px; }
   .costs aside { grid-template-columns: 1fr; }
@@ -504,32 +530,53 @@ footer { padding-block: 28px 40px; border-top: 1px solid var(--line); color: var
     </div>
 
     <div class="problem">
-      <div>
-        <h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg>Late verification</h3>
-        <p>Identity and condition are confirmed only at the warehouse, after transport and handling are paid for.</p>
-        <ul>
-          <li><b>9%</b> of returns in the United States are fraudulent</li>
-          <li>Of retailers who track fraud, <b>65%</b> saw more empty-box returns and <b>64%</b> more decoy returns, such as counterfeits</li>
-        </ul>
-      </div>
-      <div>
-        <h3><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>Slow decisions</h3>
-        <p>Refunds, resale and disputes wait for that late inspection, while seasonal items lose value.</p>
-        <ul>
-          <li>Online returns take <b>weeks</b> to process, which cuts resale value for seasonal and fast-fashion items</li>
-          <li>Returns posted to a central warehouse take <b>12–16 days</b> longer to process than returns handled in store</li>
-          <li>Returned fashion loses <b>20–50%</b> of its value over <b>8–16 weeks</b></li>
-        </ul>
-      </div>
-      <div>
-        <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/></svg>Cost per parcel</h3>
-        <p>Every item travels alone: its own box, label, scan and pickup, then its own unpacking at the other end.</p>
-        <ul>
-          <li><b>40%</b> of online shoppers buy new packaging, usually a cardboard box, just to send a return</li>
-          <li>In the Netherlands, <b>41%</b> of return shipments are now paid for by the shopper, as webshops pass the cost on</li>
-          <li>Zalando alone runs <b>around 20</b> dedicated return centres across Europe to unpack and sort them</li>
-        </ul>
-      </div>
+      <article class="problem-card">
+        <div class="problem-card-header">
+          <h3>Late verification</h3>
+          <p>Identity and condition are checked after shipping and handling are paid.</p>
+        </div>
+        <div class="problem-primary">
+          <div class="fraud-waffle" aria-hidden="true"><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="problem-primary-copy"><b class="problem-number">9%</b><span class="problem-caption">of US returns are fraudulent</span></div>
+        </div>
+        <div class="problem-secondary">
+          <p class="problem-context">Retailers tracking fraud who saw more:</p>
+          <ul class="fraud-trends">
+            <li><div class="problem-bar-label"><span>Empty-box returns</span><b>65%</b></div><span class="problem-bar" aria-hidden="true"><i style="width:65%"></i></span></li>
+            <li><div class="problem-bar-label"><span>Decoys, e.g. counterfeits</span><b>64%</b></div><span class="problem-bar" aria-hidden="true"><i style="width:64%"></i></span></li>
+          </ul>
+        </div>
+      </article>
+      <article class="problem-card">
+        <div class="problem-card-header">
+          <h3>Slow decisions</h3>
+          <p>Late inspection keeps refunds, resale and disputes waiting.</p>
+        </div>
+        <div class="problem-delay">
+          <span class="problem-caption">Warehouse processing</span>
+          <b class="problem-number">+12–16 <small>days</small></b>
+          <span class="problem-caption">compared with in-store returns</span>
+        </div>
+        <div class="problem-secondary">
+          <div class="problem-loss-heading"><b>20–50%</b><span>value lost</span></div>
+          <div aria-hidden="true"><div class="problem-loss-range"><i></i><i></i></div><div class="problem-loss-axis"><span>0%</span><span>100% of value</span></div></div>
+          <p class="problem-context">Returned fashion over <strong>8–16 weeks</strong></p>
+        </div>
+      </article>
+      <article class="problem-card">
+        <div class="problem-card-header">
+          <h3>Cost per parcel</h3>
+          <p>Each return needs packaging, a label, scans and handling.</p>
+        </div>
+        <div class="problem-primary">
+          <div class="packaging-grid" aria-hidden="true"><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i class="is-active"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="problem-primary-copy"><b class="problem-number">40%</b><span class="problem-caption">of online shoppers buy new return packaging</span></div>
+        </div>
+        <dl class="problem-secondary problem-facts">
+          <div><dt>Return shipments paid by shoppers<span>Netherlands</span></dt><dd>41%</dd></div>
+          <div><dt>Zalando return centres</dt><dd>~20</dd></div>
+        </dl>
+      </article>
     </div>
 
     <div class="callout">
